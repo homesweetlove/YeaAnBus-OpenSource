@@ -1,54 +1,49 @@
-> The complete technical notes from the original public README are preserved here. For the illustrated project overview, see [README](../README.md).
-
-[![English](https://img.shields.io/badge/README-English-24292f?style=for-the-badge)](../README.md) [![한국어](https://img.shields.io/badge/README-%ED%95%9C%EA%B5%AD%EC%96%B4-24292f?style=for-the-badge)](../README.ko.md)
+> 기존 공개 README의 상세 기술 설명을 보존한 문서입니다. 이미지와 프로젝트 소개는 [한국어 README](../README.md)를 확인하세요.
 
 # YeaAnBus · 예안버스
 
-A **personal Android app** for checking bus stops, routes, arrival information, and vehicle locations in the Yecheon–Andong area.
+예천·안동 지역의 정류장, 노선, 도착 안내와 차량 위치를 확인하는 **개인용 Android 앱**입니다.
+네 가지 색상 테마와 밝게·어둡게 모드를 갖춘 Material 3 UI, 카드형 목록, 조절 가능한 글자 크기를 사용합니다.
+런타임에 가짜 정류장이나 도착 정보를 넣지 않습니다. 안동은 키 없이 시작할 수 있으며, 예천/TAGO 대체 조회는 본인의 공공데이터포털 키가 필요합니다.
 
-It uses a Material 3 UI with four color themes, light/dark modes, card-style lists, and adjustable text size.
-No fake stops or arrival data are inserted at runtime. Andong works without a key; Yecheon/TAGO fallback requests require your own Public Data Portal API key.
+지역 선택 없이 안동·예천 정류장과 노선을 함께 검색합니다. 가까운 정류장도 두 지역을 합쳐 거리순으로 보여줍니다.
+같은 이름이나 번호를 구별할 수 있도록 결과 행에는 지역명을 표시합니다.
 
-Andong and Yecheon stops/routes are searched together without a region-selection step. Nearby stops are also merged across both areas and sorted by distance.
-Each result row shows its region so stops or route numbers with the same name can be distinguished.
+> **공개용 소스코드:** 포트폴리오·코드 검토 목적의 키 없는 공개본입니다. 개인 TAGO 키·네이버 지도 Client ID·배포 서명키·개인 APK·검증되지 않은 과거 스크린샷을 포함하지 않습니다. 안동 BIS는 별도 TAGO 키 없이 사용할 수 있고, 예천/TAGO는 본인이 승인받은 키가 필요합니다. 최신 화면은 Android 실기기 검증 후 추가합니다.
 
-> **Public source snapshot:** This repository is intended for portfolio/code review. It contains no personal TAGO key, Naver client ID, signing credentials, private APK, or unverified historical screenshots. Andong BIS can work without a TAGO key; Yecheon/TAGO requires your own authorized key. Current UI screenshots will be added after Android device validation.
+## 실행
 
-## Run
-
-1. In Android Studio, open **the folder containing this README**.
-2. Install Android SDK Platform 35 and Build Tools. Set the Gradle JDK to **17 or 21**.
-3. Replace **`"api키 삽입"`** in `app/src/main/java/kr/yeaan/bus/config/ApiKeys.kt` with your own TAGO Decoding key. Android Studio writes the SDK path to `local.properties`.
-4. After Gradle Sync, run `app` on an Android 8.0 (API 26) or newer device/emulator.
-5. Search for **Andong Station** or **Yecheon Terminal**, or use the location button to select a nearby stop. There is no region-selection step. Save favorites with the star icon.
+1. Android Studio에서 **저장소 루트 폴더**를 엽니다.
+2. Android SDK Platform 35와 Build Tools를 설치합니다. Gradle JDK는 **17 또는 21**로 지정합니다.
+3. `app/src/main/java/kr/yeaan/bus/config/ApiKeys.kt`의 **`"api키 삽입"`**을 본인 TAGO Decoding 키로 바꿉니다. SDK 경로는 Android Studio가 `local.properties`에 설정합니다.
+4. Gradle Sync 후 Android 8.0(API 26) 이상 기기/에뮬레이터에서 `app`을 실행합니다.
+5. **안동역** 또는 **예천터미널**을 검색하거나 위치 버튼으로 가까운 정류장을 선택합니다. 지역 선택 단계는 없습니다. 별 아이콘으로 즐겨찾기를 저장합니다.
 
 Windows:
-
 ```powershell
 .\gradlew.bat assembleDebug testDebugUnitTest lintDebug
 ```
 
 macOS/Linux:
-
 ```sh
 chmod +x gradlew
 ./gradlew assembleDebug testDebugUnitTest lintDebug
 ```
 
 APK: `app/build/outputs/apk/debug/app-debug.apk`  
-Tests: `app/build/reports/tests/testDebugUnitTest/index.html`  
+테스트: `app/build/reports/tests/testDebugUnitTest/index.html`  
 Lint: `app/build/reports/lint-results-debug.html`
 
 ## API Key
 
-Apply for access and approval for the following **four services** on Korea's Public Data Portal:
+공공데이터포털에서 다음 **4개 서비스의 활용 신청 및 승인**을 진행합니다.
 
-- [TAGO Bus Stop Information](https://www.data.go.kr/data/15098534/openapi.do)
-- [TAGO Bus Route Information](https://www.data.go.kr/data/15098529/openapi.do)
-- [TAGO Bus Arrival Information](https://www.data.go.kr/data/15098530/openapi.do)
-- [TAGO Bus Location Information](https://www.data.go.kr/data/15098533/openapi.do)
+- [TAGO 버스정류소정보](https://www.data.go.kr/data/15098534/openapi.do)
+- [TAGO 버스노선정보](https://www.data.go.kr/data/15098529/openapi.do)
+- [TAGO 버스도착정보](https://www.data.go.kr/data/15098530/openapi.do)
+- [TAGO 버스위치정보](https://www.data.go.kr/data/15098533/openapi.do)
 
-**Key file:** `app/src/main/java/kr/yeaan/bus/config/ApiKeys.kt`
+**키 입력 파일:** `app/src/main/java/kr/yeaan/bus/config/ApiKeys.kt`
 
 ```kotlin
 object ApiKeys {
@@ -56,239 +51,214 @@ object ApiKeys {
 }
 ```
 
-Replace the string directly with your own key. This file is excluded from Git.
+문자열을 본인 키로 직접 바꿉니다. 이 파일은 Git에서 제외됩니다.
+Git으로 새로 받은 프로젝트에는 로컬 키 파일이 없으므로
+`app/src/keyTemplate/java/kr/yeaan/bus/config/ApiKeys.kt`를 위 경로로 복사한 뒤 수정하고 Gradle Sync 하세요.
+로컬 파일이 없으면 Gradle이 키 없는 템플릿을 선택하므로 CI와 안동 BIS 조회는 그대로 빌드됩니다.
+`local.properties`에는 SDK 경로와 네이버 지도 Client ID(`NAVER_MAP_CLIENT_ID`)를 둡니다.
 
-A freshly cloned project does not include the local key file. Copy
-`app/src/keyTemplate/java/kr/yeaan/bus/config/ApiKeys.kt` to the path above, edit it, and run Gradle Sync.
-If the local file is missing, Gradle selects the keyless template so CI and Andong BIS requests can still build and run.
+**Decoding 키**를 입력합니다. Retrofit이 쿼리 문자열을 한 번 인코딩합니다.
+키를 바꾼 뒤 앱을 다시 빌드하세요. 키가 없어도 빌드와 안동 BIS 조회는 가능합니다.
+예천 제공 여부는 TAGO 도시코드 목록에서 동적으로 확인하며, 제공하지 않는 경우 이유를 표시합니다.
 
-Keep the SDK path and Naver Map Client ID (`NAVER_MAP_CLIENT_ID`) in `local.properties`.
+로컬 `ApiKeys.kt`, `local.properties`, 빌드 결과, 서명 키는 Git에서 제외됩니다. 키 없는 `src/keyTemplate`은 추적 대상이므로 수정하지 않습니다. HTTP 로깅을 설치하지 않았고 요청 URL/키를 오류 메시지에 출력하지 않습니다.
+단, Android 클라이언트에 포함된 키는 APK 분석으로 추출될 수 있습니다. 이 구조는 **Git 소스 노출 방지**이며, 키를 숨겨야 하는 공개 배포에는 서버 프록시가 필요합니다. 개인 키가 포함된 APK도 공개 저장소에 올리지 마세요.
 
-Use the **Decoding key**. Retrofit encodes the query string once.
-Rebuild the app after changing the key. The app can still build and use Andong BIS without a key.
-Yecheon availability is checked dynamically from the TAGO city-code list. If TAGO does not provide the region, the app explains why.
+## 데이터 제공 및 대체 조회
 
-Local `ApiKeys.kt`, `local.properties`, build outputs, and signing keys are excluded from Git. The keyless `src/keyTemplate` is tracked and should not be edited. HTTP logging is not installed, and request URLs/API keys are not printed in error messages.
+[안동 BIS](https://bus.andong.go.kr/route?tab=route)의 현재 공개 웹앱에서 사용 중인 읽기 전용 HTTPS 경로를 확인했습니다(2026-09-08).
 
-An API key embedded in an Android client can still be extracted from the APK. This structure prevents **source exposure through Git**, but public distribution that requires a hidden secret should use a server proxy instead. Do not publish an APK containing a personal key in this repository.
-
-## Data Providers and Fallback Requests
-
-The current public read-only HTTPS paths used by [Andong BIS](https://bus.andong.go.kr/route?tab=route) were verified on 2026-09-08.
-
-| Purpose | Public Path |
+| 목적 | 공개 경로 |
 |---|---|
-| Stop list | `/api/bus/stops` |
-| Route list | `/api/hp/busRoute` |
-| Arrivals by stop | `/api/bus/selectBusStopList?stopId=...` |
-| Vehicle GPS | `/api/gnss/all` |
-| Stops for a route | `/api/bus/routes/{routeId}/stops` |
-| Road geometry | `/api/bus/selectBusVertex?routeId=...` |
+| 정류장 목록 | `/api/bus/stops` |
+| 노선 목록 | `/api/hp/busRoute` |
+| 정류장별 도착 | `/api/bus/selectBusStopList?stopId=...` |
+| 차량 GPS | `/api/gnss/all` |
+| 노선 정류장 | `/api/bus/routes/{routeId}/stops` |
+| 도로 형상 | `/api/bus/selectBusVertex?routeId=...` |
 
-The currently public queries do not require a separate BIS key. These paths are not a versioned official developer-contract API and may change when the site is redesigned. They are intended for personal lookup and should be used in accordance with the operator's policies.
+현재 공개 조회는 별도 BIS 키가 필요 없습니다. 이 경로는 버전이 보장된 정식 개발자 계약 API가 아니므로 개편 시 변경될 수 있습니다. 개인 조회 목적이며 운영기관 정책을 따라야 합니다.
 
-- Andong: prefer BIS, fall back to TAGO on request failure. A successful empty arrival list is treated as “no current service information.”
-- Yecheon: TAGO. City codes are not arbitrarily hard-coded.
-- Search and nearby-stop queries request both regions and merge the results. If one region fails or the TAGO key is missing, results from the other region remain available and the unavailable region is explained.
-- Stop ID systems stay separated by provider. A fallback match is made only when the app can confirm **the same stop number within 45 m, or one unique stop with the same name**.
-- BIS vehicle matching is confirmed by the actual vehicle license plate. A vehicle is not attached merely because the route number matches, which could otherwise select a bus traveling in the opposite direction.
-- TAGO vehicles are attached only when they can be uniquely identified by stop order within the route and remaining-stop count. Circular routes or multiple candidates are not assigned an arbitrary position.
-- TAGO location queries are limited to at most four routes nearest in arrival order. The full arrival list is still displayed.
-- “No arrival information” is normal late at night, after service ends, or on unsupported routes. The response time and cache state are displayed.
-- Real authenticated TAGO requests require the user's key. During development, MockWebServer validates responses, fallback logic, and encoding without a key.
+- 안동: BIS 우선, 요청 실패 시 TAGO. 성공한 빈 도착 목록은 운행 정보 없음으로 처리합니다.
+- 예천: TAGO. 도시코드를 임의로 하드코딩하지 않습니다.
+- 검색과 주변 정류장 조회는 두 지역을 동시에 요청해 합칩니다. 한 지역이 실패하거나 TAGO 키가 없으면 다른 지역 결과를 유지하고 조회하지 못한 지역을 안내합니다.
+- 정류장 ID 체계는 공급자별로 분리합니다. 대체 조회는 **좌표 45m 이내에서 같은 정류장 번호, 또는 유일한 동일 이름**을 확인한 경우에만 수행합니다.
+- BIS 차량 연결은 실제 차량 번호판으로 확인합니다. 같은 노선 번호만으로 반대 방향 차량을 연결하지 않습니다.
+- TAGO 차량은 노선 내 정류장 순번과 남은 정류장 수로 유일하게 확인될 때만 연결합니다. 순환노선이나 복수 후보가 있으면 임의 위치를 표시하지 않습니다.
+- TAGO 위치 조회는 가까운 도착 순서의 최대 4개 노선으로 제한합니다. 도착 목록은 전체 표시합니다.
+- 새벽, 운행 종료, 미제공 노선에서는 “도착 정보 없음”이 정상입니다. 수신 시각과 캐시 여부를 표시합니다.
+- 실제 TAGO 인증 조회에는 사용자 키가 필요합니다. 개발 시 키 없이 MockWebServer로 응답·대체 조회·인코딩을 검증합니다.
 
-## Location Prediction and Refresh Policy
+## 위치 예측과 새로고침
 
-`BusPredictor` keeps the latest real GPS point, speed, direction, and observation time for each vehicle.
+`BusPredictor`는 차량별 마지막 실제 GPS, 속도, 방향, 수신 시각을 보유합니다.
+서버 시각이 있는 BIS는 한국 시간대를 명시해 파싱합니다. TAGO는 서버 관측 시각이 없어 응답 수신 시각을 사용하므로 원본 데이터의 지연을 완전히 판별할 수 없습니다.
 
-BIS data with server timestamps is parsed explicitly in Korea time. TAGO has no server observation timestamp, so response-receipt time is used; therefore upstream data delay cannot be detected perfectly.
+- GPS 차분/제공 속도와 1차원 Kalman 필터로 속도를 안정화합니다.
+- 비현실적인 GPS 점프, 역순·중복 시각, 잘못된 좌표는 제외합니다.
+- 검증된 도로 형상이 있는 선택 노선은 도로를 따라 이동합니다.
+- 형상이 없으면 최근 이동 방향으로 최대 12초, 형상이 있으면 최대 30초까지만 추정한 뒤 멈춥니다.
+- 새 관측은 1.5초 smoothstep으로 보정합니다. 큰 단절은 잘못된 긴 이동 애니메이션을 피하기 위해 위치를 재설정합니다.
+- 60초가 지난 GPS는 이전 위치로 구분합니다. 네트워크 오류 캐시는 현재 도착 예측으로 표시하지 않습니다.
+- 지도 마커 렌더링은 최대 30fps입니다. 렌더링에는 API 호출이 없습니다.
 
-- Speed is stabilized using GPS differences/provider speed plus a one-dimensional Kalman filter.
-- Unrealistic GPS jumps, reversed/duplicate timestamps, and invalid coordinates are rejected.
-- For a selected route with validated road geometry, the vehicle is projected along the road.
-- Without geometry, movement is extrapolated along the recent heading for at most 12 seconds; with geometry, at most 30 seconds, then prediction stops.
-- New observations are aligned over 1.5 seconds with smoothstep. Large discontinuities reset the location instead of showing a long incorrect movement animation.
-- GPS older than 60 seconds is marked as an old position. Network-error cache is not displayed as a current arrival prediction.
-- Map-marker rendering is capped at 30 fps and does not trigger API calls.
-
-| State | Default Polling Interval |
+| 상태 | 기본 조회 간격 |
 |---|---:|
-| Far bus / no information | 30 s |
-| About 1–2 km away or ETA ≤ 5 min | 10 s |
-| About 500 m away or ETA ≤ 90 s | 5 s |
-| About 120 m away or ETA ≤ 35 s | 3 s |
-| Connection failure | 60 s → up to 120 s |
+| 먼 버스 / 정보 없음 | 30초 |
+| 약 1~2km 또는 ETA 5분 이내 | 10초 |
+| 약 500m 또는 ETA 90초 이내 | 5초 |
+| 약 120m 또는 ETA 35초 이내 | 3초 |
+| 연결 실패 | 60초 → 최대 120초 |
 
-The distance 10 seconds into the future is estimated from speed so refresh thresholds can be entered early.
+속도로 10초 뒤 거리를 미리 계산해 임계값에 대응합니다.
+한 갱신 주기에 BIS 도착 및 필요 시 GPS 요청이 발생합니다. TAGO는 도시코드·노선 정류장 초기 조회가 추가될 수 있습니다.
+동시 갱신은 Mutex로 합치고 동일 정류장 결과는 최소 3초 재사용합니다.
+검색은 350ms debounce, 정류장·노선 기본 자료는 24시간 캐시를 사용합니다.
+홈·도착·지도 중 활성 화면에서만 실시간 조회하며, 검색 화면/백그라운드/화면 꺼짐 시 네트워크 작업을 취소합니다.
 
-A refresh cycle requests BIS arrivals and, when necessary, GPS. TAGO may also require initial city-code and route-stop lookups.
-Concurrent refreshes are merged with a Mutex, and the same stop result is reused for at least 3 seconds.
-Search uses a 350 ms debounce. Basic stop/route data is cached for 24 hours.
-Real-time network work runs only while Home, Arrival, or Map is active; it is canceled on the search screen, in the background, or when the screen is off.
+도착 예측은 도로 잔여 거리(없으면 직선 거리 × 1.18), 최근 속도, 세션 중 학습한 노선 평균 속도(초기 6m/s), 중간 정류장당 16초 정차, 8초 여유를 반영합니다.
+API ETA가 있으면 70%를 유지하고 내부 예측을 30% 혼합하되 보정 폭을 제한합니다. 계수는 **현장 실측으로 보정하기 전의 휴리스틱**이며 정확도를 보장하지 않습니다.
 
-Arrival prediction uses remaining road distance (or straight-line distance × 1.18 when road distance is unavailable), recent speed, the route's session-learned average speed (initially 6 m/s), 16 seconds per intermediate stop, and an 8-second buffer.
+## 저장 및 알림
 
-If the API provides an ETA, 70% of that value is retained and 30% of the internal prediction is blended in, with correction limits. These coefficients are **heuristics prior to field calibration** and accuracy is not guaranteed.
+Room:
+- 즐겨찾기 및 최근 조회 12개
+- 마지막 실제 차량 위치
+- 도착 스냅샷, 검색 및 노선 캐시
+- 도착 오류 캐시는 10분까지만 표시, 차량 기록 1일/일반 캐시 7일 정리
 
-## Storage and Notifications
+기기 위치는 사용자가 버튼을 누를 때 일회성으로 요청하며 서버에 별도로 전송하거나 DB에 저장하지 않습니다.
+위치 권한을 거부해도 검색/즐겨찾기를 사용할 수 있습니다.
+지도는 네이버 지도 SDK를 사용하므로 지도 제공자에게 지도 로딩에 필요한 네트워크 요청 정보가 전달됩니다.
 
-Room stores:
+`ArrivalWork.enqueueCheck`와 `ArrivalCheckWorker`는 향후 알림을 위한 **일회성 조건 확인 구조**입니다.
+기본으로 예약하거나 알림을 보내지 않습니다. 현재 반환 데이터는 5분 이내 여부 및 ETA입니다.
+정확한 5분 전 알림의 권한 UI·Notification 게시·중복 방지 정책은 후속 기능입니다.
+WorkManager 주기 작업의 최소 15분 제한 때문에 3~30초 실시간 갱신에 사용하지 않습니다.
 
-- Favorites and the 12 most recent lookups
-- Latest real vehicle locations
-- Arrival snapshots, search cache, and route cache
-- Arrival-error cache displayed for at most 10 minutes; vehicle records cleaned after 1 day and general cache after 7 days
+## 지도
 
-Device location is requested only once when the user presses the button. It is not separately sent to a server or stored in the database.
-Search and favorites continue to work if location permission is denied.
-The map uses the Naver Map SDK, so map-loading network information is sent to the map provider as required by that service.
-
-`ArrivalWork.enqueueCheck` and `ArrivalCheckWorker` provide a **one-time condition-check structure** for future notifications.
-They are not scheduled by default and do not currently post notifications. The returned data only indicates whether arrival is within 5 minutes and includes the ETA.
-Permission UI, notification posting, and duplicate-prevention policy for precise 5-minute alerts are future work.
-Because periodic WorkManager jobs have a minimum interval of 15 minutes, WorkManager is not used for 3–30 second live refresh.
-
-## Map
-
-The app uses Naver Map Android SDK 3.23.3. In Naver Cloud's newer **Maps** product, enable Dynamic Map and register Android package `kr.yeaan.bus`.
-
-Add the following value to `local.properties` and rebuild:
+네이버 지도 Android SDK 3.23.3을 사용합니다. 네이버 클라우드의 신규 **Maps** 상품에서
+Dynamic Map을 선택하고 Android 패키지 `kr.yeaan.bus`를 등록합니다.
+`local.properties`에 다음 값을 추가한 뒤 다시 빌드합니다.
 
 ```properties
-NAVER_MAP_CLIENT_ID=YOUR_Client_ID
+NAVER_MAP_CLIENT_ID=본인의_Client_ID
 ```
 
-A Client Secret is not required. The newer Maps `NCP_KEY_ID` authentication flow is used.
-The default Naver logo and copyright attribution provided by the SDK are retained.
+Client Secret은 필요하지 않습니다. 신규 Maps용 `NCP_KEY_ID` 인증을 사용합니다.
+네이버 로고와 저작권 표시는 SDK 기본 표시를 유지합니다.
+지도는 화면에 머무르는 동안 재사용하며 버스 갱신은 마커 좌표만 변경합니다.
+인증 또는 이용 한도 오류는 지도 위에 안내하고 자동으로 반복 재시도하지 않습니다.
 
-The map instance is reused while the screen remains active, and bus refreshes update marker coordinates only.
-Authentication or usage-limit errors are displayed on the map and are not retried in an automatic loop.
+과금 제한은 네이버 콘솔의 **한도 및 알림 설정**에서 관리합니다.
+이 프로젝트의 권장 설정은 일 200,000건, 월 5,000,000건, 초과 사용 허용안함입니다.
+대표 계정 무료량 적용 여부와 같은 계정의 다른 앱 사용량을 확인해야 하며,
+한도 적용에는 지연이 있을 수 있으므로 앱 코드만으로 무과금을 보장하지 않습니다.
+주변 장소 검색은 아직 구현하지 않았으며 지도 자체의 건물·상호 표시를 사용합니다.
+과거 OpenStreetMap 시절 스크린샷은 공개본에서 제외했습니다. 최신 UI 화면은 실기기 검증 후 등록합니다.
 
-Manage billing limits in the Naver console under **Limits and Alerts**.
-Recommended project limits are 200,000 requests/day and 5,000,000/month with overage disabled.
-Whether account-level free allocation applies and how much other apps under the same account consume must still be checked.
-Because limit enforcement can be delayed, application code alone cannot guarantee zero billing.
-Nearby place search is not currently implemented; the base map's own building/business labels are used.
-Historical OpenStreetMap screenshots are intentionally excluded from this public source snapshot; current UI captures need device verification.
-
-## Technology and Structure
+## 기술 및 구조
 
 Kotlin 2.0.21 · Jetpack Compose · Material 3 · MVVM · Coroutines/Flow · Retrofit 2.11 · OkHttp 4.12 · Room 2.6.1/KSP · WorkManager 2.10 · Gradle Kotlin DSL/Wrapper 8.9 · AGP 8.7.3.
 
 ```text
 app/src/main/java/kr/yeaan/bus/
-├── algorithm/          GPS/speed filter/map projection/ETA/refresh policy (pure Kotlin)
+├── algorithm/          GPS·속도 필터·지도 투영·ETA·갱신 정책 (순수 Kotlin)
 ├── data/
-│   ├── local/          Room entities/DAO/Database
-│   ├── model/          provider-independent domain models
-│   ├── remote/         Retrofit/BIS/TAGO response parsing
-│   └── repository/     provider priority/fallback/cache/storage
-├── location/           one-time location acquisition and cancellation
-├── notification/       WorkManager extension point
+│   ├── local/          Room 엔티티·DAO·Database
+│   ├── model/          공급자 독립 도메인 모델
+│   ├── remote/         Retrofit·BIS/TAGO 응답 해석
+│   └── repository/     우선 조회·fallback·캐시·저장
+├── location/           일회성 위치 획득 및 취소
+├── notification/       WorkManager 확장 지점
 ├── ui/
-│   ├── BusViewModel.kt StateFlow/search/screen state/refresh lifecycle
-│   ├── components/     shared lists/empty states/notices
+│   ├── BusViewModel.kt StateFlow·검색·화면 상태·갱신 수명
+│   ├── components/     공통 목록·빈 상태·안내
 │   ├── screens/        Home/Search/BusArrival/Map
-│   └── theme/          color/typography/shape
-├── MainActivity.kt     Compose entry/permissions/navigation
-└── YeaAnBusApp.kt      dependency assembly
-app/src/test/           automated algorithm/API/repository tests
-app/src/androidTest/    emulator UI verification
-app/schemas/            Room schemas
+│   └── theme/          색상·타이포그래피·형태
+├── MainActivity.kt     Compose 진입·권한·내비게이션
+└── YeaAnBusApp.kt       의존성 조립
+app/src/test/           알고리즘·API·Repository 자동 테스트
+app/src/androidTest/    에뮬레이터 화면 검증
+app/schemas/            Room 스키마
 ```
 
-The User tab lets you select Ocean Blue, Forest, Lavender, or Sunset Orange themes plus system/light/dark display mode.
-To open a route on the map, tap a bus row in the arrival list.
+사용자 탭에서 오션 블루·포레스트·라벤더·선셋 오렌지 테마와 기기 설정·밝게·어둡게 화면 모드를 선택합니다.
+노선 지도를 연동하려면 도착 목록의 버스 행을 누르세요.
 
-## Validation
+## 검증
 
-As of 2026-09-08, 37 unit tests passed. Before the integrated-search change, two real BIS screen tests were also verified along with background map tiles and bus markers. Build/Lint results and screen-verification scope for each change are documented in the validation record below.
+2026-09-08 기준 단위 테스트 37개 통과입니다. 통합 검색 변경 전에는 실제 BIS 화면 테스트 2개와 지도 배경 타일·버스 마커 표시도 확인했습니다. 변경별 빌드·Lint 결과와 화면 검증 범위는 아래 검증 기록을 참고하세요.
 
-`testDebugUnitTest` verifies GPS/ETA/refresh intervals, TAGO single/array/empty responses, prevention of double API-key encoding, timestamp parsing, caching, and fallback behavior without a real key or external network.
+`testDebugUnitTest`는 실제 키/외부 네트워크 없이 GPS·ETA·갱신 주기,
+TAGO 단일/배열/빈 응답, 키 이중 인코딩 방지, 시각 해석, 캐시 및 대체 조회를 검증합니다.
 
-Emulator UI:
-
+에뮬레이터 UI:
 ```powershell
 .\gradlew.bat connectedDebugAndroidTest
 ```
 
-To include real BIS search:
-
+실제 BIS 검색까지 검증하려면:
 ```powershell
 .\gradlew.bat connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.liveBis=true"
 ```
 
-Live UI tests require a working BIS response and internet access.
-
-Screenshots preferentially capture the Compose app window itself and save files such as `yeaan-qa-*.png` in the test device's Download directory. If app-window capture times out, a system screenshot is saved for diagnostics.
-
-Development validation results and remaining limitations are recorded in [docs/VALIDATION.md](VALIDATION.md).
-
-## User Tab and Personal Settings
-
-- Four color themes: Ocean Blue, Forest, Lavender, Sunset Orange
-- Follow system / Light / Dark display modes
-- Default / Large (115%) / Larger (130%) text sizes, applied in addition to the phone's font-size setting
-- Data saver: limits automatic bus polling to at least 30-second intervals. Error retry backoff remains active and manual refresh is still available.
-- Keep map screen awake: active only while viewing the map
-- Open and remove favorites directly
-
-Settings are stored in device SharedPreferences and persist after restart.
-The User tab stops real-time bus polling.
-Data Saver does not replace map-provider billing limits.
-Home notices, search fields, stop lists, and arrival lists follow the selected theme.
-
-### Selecting Stops and Buses on the Map
-
-The Map tab can be opened without first searching for a stop.
-It loads the complete Andong/Yecheon stop list from the existing daily cache and attaches markers only for stops inside the visible map area.
-Moving the map reveals stops in the newly visible area.
-Tapping a stop opens a bottom panel where an arriving bus can be selected.
-
-After selecting a bus, its vehicle location and route line are displayed.
-If Andong BIS provides road geometry, the route is shown as a solid line.
-If road geometry is unavailable, stop order is connected with a dashed line.
-The dashed line is not used as road geometry and does not invent a vehicle position when GPS is unavailable.
-Use the All Buses button to return to showing buses for the selected stop.
-Partial stop-list failures can be retried.
-
-At the user's request, this change is built only through the installable package stage; final map-screen and physical-device verification is left to the user.
-
-### Favorite Commute Dashboard, Widget, and Lock Screen
-
-- New favorites are limited to three stops. Existing stored data with more than three favorites is not deleted; Home and widgets display the first three.
-- Home displays up to three upcoming buses per favorite stop and refreshes every 30 seconds while the screen is active (60 seconds with Data Saver). Failures and lookup times are displayed per stop.
-- User tab → Add widget to Home screen. The widget displays estimated arrival and lookup time and supports manual refresh plus a 15-minute WorkManager schedule. Actual execution may be delayed by power-saving/network state.
-- User tab → Start live commute view. With notification permission, a foreground service refreshes the notification and widget together for up to one hour. It can be stopped from the notification or User tab. Lock-screen visibility follows the phone's notification settings; this is not a dedicated lock-screen widget.
-- Arrival-summary-only API requests and a shared 30-second cache are used. If no widget is added, periodic widget work is not scheduled. GPS and route geometry are not requested for summary-only views.
-- At the user's request, final screen/physical-device testing is not performed.
-
-### Three Transparent Widget Sizes and Per-Widget Settings
-
-Small (one stop), medium (up to two), and large (up to three) widgets are provided.
-Add them from the User tab size buttons or the launcher widget list, then use each widget's settings button to choose favorite stops.
-Selection is stored per widget ID, so multiple widgets of the same size can show different stops.
-A stop removed from favorites disappears from the widget and is not automatically replaced.
-
-The background is transparent, and text can be white or dark.
-Small and medium widgets show the nearest bus for each stop; large shows two.
-Exact launcher cell dimensions vary, but each widget can expand beyond its minimum size.
-Existing large widgets remain intact and display existing favorites until configured.
-
-### Theme Colors and Rounded Cards
-
-Tapping Theme in the User tab opens a bottom color picker.
-The selected theme is applied to backgrounds, cards, the Home header, and arrival highlights.
-Cards and rows use rounded corners and subtle shadows.
-Color changes are stored immediately and the sheet closes with Done.
-
-For this change, the APK is built but screen testing is not run.
-
-Widgets do not display lookup timestamps.
-Stop names use large bold text, route numbers use the secondary color, and estimated arrival time uses mint (or dark teal with the dark-text option).
-A refresh notice is shown only when a request fails and older data is being displayed.
+실시간 UI 테스트는 BIS의 정상 응답과 인터넷 연결이 필요합니다.
+화면 캡처는 Compose 앱 창 자체를 우선 캡처하고 테스트 기기의 Download 폴더에 `yeaan-qa-*.png`로 저장합니다. 캡처 시간 초과 시 시스템 화면을 진단용으로 저장합니다.
+개발 검증 결과와 남은 한계는 [docs/VALIDATION.md](VALIDATION.md)에 기록합니다.
 
 
-## License
 
-Code in this repository is available under the [MIT License](../LICENSE). Third-party Android SDKs and data providers retain their own licenses and terms.
+## 사용자 탭과 개인 설정
+
+- 오션 블루, 포레스트, 라벤더, 선셋 오렌지의 네 가지 색상 테마
+- 기기 설정에 따르기 / 밝게 / 어둡게 화면 모드
+- 기본 / 크게(115%) / 더 크게(130%) 글자 크기. 휴대폰 글자 설정에 추가 적용
+- 데이터 절약: 자동 버스 조회를 최소 30초 간격으로 제한. 오류 재시도 대기시간은 유지하며 수동 새로고침은 사용 가능
+- 지도 화면 켜짐 유지: 지도 화면을 보는 동안만 적용
+- 즐겨찾기 목록 바로 열기와 해제
+
+설정은 기기의 SharedPreferences에 저장되어 재실행 후에도 유지됩니다.
+사용자 탭에서는 실시간 버스 조회를 중지합니다. 데이터 절약 설정은 지도 요금 한도를 대신하지 않습니다.
+홈의 안내 카드와 검색 입력, 정류장·도착 목록은 선택한 테마를 따릅니다.
+
+
+
+### 지도에서 정류장과 버스 선택
+
+지도 탭은 정류장을 먼저 검색하지 않아도 열립니다. 안동·예천 전체 정류장 목록을 기존 일일 캐시로 불러오고, 현재 보이는 지도 영역의 정류장 마커만 부착합니다. 지도를 움직이면 해당 영역의 정류장들이 표시됩니다. 정류장을 누르면 하단에서 도착 예정 버스를 선택할 수 있습니다.
+
+버스를 선택하면 차량 위치와 노선 선을 표시합니다. 안동 BIS가 도로 경로를 제공하면 실선으로 표시하고, 도로 경로가 없는 경우 정류장 순서 연결선을 점선으로 표시합니다. 점선은 도로 경로로 사용하지 않으며 GPS가 없는 차량의 위치를 만들어내지 않습니다. 전체 버스 버튼으로 해당 정류장의 버스 표시로 돌아갑니다. 정류장 목록 일부 조회 실패 시 재시도할 수 있습니다.
+
+이 변경은 사용자 요청에 따라 설치용 빌드까지만 수행하며 최종 지도 화면·실기기 확인은 사용자가 진행합니다.
+
+
+### 즐겨찾기 출퇴근 대시보드·위젯·잠금화면
+
+- 새 즐겨찾기는 최대 3곳까지 등록합니다. 기존에 3곳을 초과해 저장한 데이터는 삭제하지 않으며 홈과 위젯은 첫 3곳을 표시합니다.
+- 홈에 정류장별 도착 예정 버스 최대 3대를 표시하고, 화면이 활성화된 동안 30초 간격(데이터 절약 60초)으로 조회합니다. 정류장별 실패·조회 시각을 표시합니다.
+- 사용자 탭 → 홈 화면에 위젯 추가. 위젯은 예상 도착 시각과 조회 시각을 표시하며 수동 새로고침 및 WorkManager 15분 주기를 사용합니다. 실제 실행은 절전·네트워크 상태에 따라 늦어질 수 있습니다.
+- 사용자 탭 → 출퇴근 실시간 보기 시작. 알림 권한을 허용하면 최대 1시간 동안 포그라운드 서비스로 알림과 위젯을 함께 갱신합니다. 알림/사용자 탭에서 종료할 수 있습니다. 잠금화면 노출은 휴대폰 알림 설정을 따릅니다. 잠금화면 전용 위젯은 아닙니다.
+- 도착 요약 전용 API 조회와 30초 공유 캐시를 사용하며 위젯을 추가하지 않으면 위젯 주기 작업을 예약하지 않습니다. GPS·노선 경로는 요약용으로 요청하지 않습니다.
+- 사용자 요청에 따라 최종 화면·실기기 테스트는 수행하지 않습니다.
+
+
+### 투명 위젯 3종과 개별 설정
+
+소형(정류장 1곳), 중형(최대 2곳), 대형(최대 3곳)을 제공합니다. 사용자 탭의 크기 버튼 또는 런처 위젯 목록에서 추가한 뒤 위젯의 설정 버튼으로 즐겨찾기 정류장을 선택하세요. 선택은 위젯 ID별로 저장되어 같은 크기의 위젯 여러 개도 서로 다른 정류장을 표시합니다. 즐겨찾기에서 삭제한 정류장은 표시하지 않으며 다른 정류장으로 자동 교체하지 않습니다.
+
+배경은 투명하고 글자색은 흰색/어두운색 중 선택할 수 있습니다. 소형·중형은 정류장별 가장 가까운 버스 1대, 대형은 2대를 보여줍니다. 정확한 셀 크기는 런처에 따라 달라질 수 있으며 각 크기의 최소 크기 이상으로 확장할 수 있습니다. 기존 대형 위젯은 그대로 유지되고 설정 전에는 기존 즐겨찾기를 표시합니다.
+
+
+### 테마 컬러와 둥근 카드
+
+사용자 탭의 테마 변경을 누르면 하단 컬러 선택창이 열립니다. 선택한 테마를 배경·카드·홈 상단·도착 강조색에 적용하고, 카드와 목록은 둥근 모서리 및 낮은 그림자로 구분합니다. 색상 변경은 즉시 저장되며 선택 완료로 창을 닫습니다. 이번 변경은 APK 빌드까지만 수행하고 화면 테스트는 실행하지 않습니다.
+
+
+위젯은 조회 시각을 표시하지 않습니다. 정류장명은 큰 굵은 글씨, 노선 번호는 보조색, 예상 도착 시각은 민트색(어두운 글자 설정에서는 진한 청록색)으로 구분합니다. 조회 실패로 이전 데이터를 표시할 때만 새로고침 안내를 남깁니다.
+
+
+## 라이선스
+
+저장소의 자체 코드는 [MIT 라이선스](../LICENSE)로 공개합니다. 외부 Android SDK·공공데이터 제공자의 라이선스와 이용 조건은 별도 적용됩니다.
