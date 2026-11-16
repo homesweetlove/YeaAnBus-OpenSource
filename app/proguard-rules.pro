@@ -1,0 +1,3 @@
+-keepattributes Signature,InnerClasses,EnclosingMethod
+-keep class kr.yeaan.bus.data.model.** { *; }
+-keep class kr.yeaan.bus.data.remote.**Dto { *; }

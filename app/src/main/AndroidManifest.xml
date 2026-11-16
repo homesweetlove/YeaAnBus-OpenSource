@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <application android:name=".YeaAnBusApp" android:allowBackup="false" android:dataExtractionRules="@xml/data_extraction_rules" android:fullBackupContent="false"
+        android:label="@string/app_name" android:icon="@drawable/ic_launcher"
+        android:supportsRtl="true" android:theme="@style/Theme.YeaAnBus"
+        android:usesCleartextTraffic="false">
+        <meta-data android:name="com.naver.maps.map.NCP_KEY_ID" android:value="${naverMapClientId}" />
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name=".notification.CommuteService" android:exported="false" android:foregroundServiceType="dataSync" />
+        <receiver android:name=".widget.FavoriteWidget" android:exported="false" android:label="예안버스 · 대형 (3곳)">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/favorite_widget_info" />
+        </receiver>
+        <receiver android:name=".widget.FavoriteWidgetSmall" android:exported="false" android:label="예안버스 · 소형 (1곳)">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/favorite_widget_small_info" />
+        </receiver>
+        <receiver android:name=".widget.FavoriteWidgetMedium" android:exported="false" android:label="예안버스 · 중형 (2곳)">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/favorite_widget_medium_info" />
+        </receiver>
+        <activity android:name=".widget.WidgetSettingsActivity" android:exported="true" android:label="위젯 설정">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /></intent-filter>
+        </activity>
+    </application>
+</manifest>
