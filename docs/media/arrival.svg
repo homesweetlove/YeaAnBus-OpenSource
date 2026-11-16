@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="385" viewBox="0 0 680 385" role="img" aria-labelledby="t d">
+  <title id="t">버스 도착 정보</title><desc id="d">도착 예정 시간을 정류장 전광판처럼 보여주는 기능 일러스트</desc>
+  <rect width="680" height="385" rx="26" fill="#EDF2F7"/>
+  <rect x="25" y="26" width="630" height="335" rx="23" fill="#142437"/>
+  <rect x="46" y="47" width="588" height="54" rx="12" fill="#263B51"/>
+  <circle cx="68" cy="74" r="7" fill="#FFBC58"/>
+  <text x="88" y="81" fill="#FFFFFF" font-size="23" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif">안동역</text>
+  <text x="613" y="80" text-anchor="end" fill="#FFBC58" font-size="14" font-weight="700" font-family="Arial, sans-serif">ARRIVALS</text>
+  <g font-family="Noto Sans KR, Arial, sans-serif">
+    <text x="56" y="139" fill="#93A6BA" font-size="15">노선</text><text x="424" y="139" fill="#93A6BA" font-size="15">도착 예정</text>
+    <rect x="46" y="152" width="588" height="72" rx="11" fill="#1E3348"/>
+    <rect x="61" y="166" width="92" height="44" rx="9" fill="#E6EEFA"/>
+    <text x="107" y="196" fill="#255EAD" text-anchor="middle" font-size="22" font-weight="800">순환2</text>
+    <text x="169" y="196" fill="#DFE8F0" font-size="18" font-weight="600">순환 노선</text>
+    <text x="601" y="197" fill="#FFBC58" text-anchor="end" font-size="27" font-weight="800">3분</text>
+    <rect x="46" y="236" width="588" height="72" rx="11" fill="#1E3348"/>
+    <rect x="61" y="250" width="92" height="44" rx="9" fill="#FCEDCF"/>
+    <text x="107" y="280" fill="#885916" text-anchor="middle" font-size="24" font-weight="800">11</text>
+    <text x="169" y="280" fill="#DFE8F0" font-size="18" font-weight="600">버스 위치 확인</text>
+    <text x="601" y="282" fill="#DFE8F0" text-anchor="end" font-size="26" font-weight="800">11분</text>
+    <text x="55" y="340" fill="#8DA2B4" font-size="13">FEATURE ILLUSTRATION · NOT A SCREENSHOT</text>
+  </g>
+</svg>

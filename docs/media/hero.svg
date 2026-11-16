@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">YeaAnBus — 안동과 예천의 버스 정보를 한눈에</title>
+  <desc id="desc">남색과 호박색을 사용한 프로젝트 소개 배너. 오른쪽에는 버스 도착 전광판을 표현한 일러스트가 있습니다. 실제 앱 스크린샷은 아닙니다.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0F1A28"/><stop offset="1" stop-color="#203248"/></linearGradient>
+    <linearGradient id="pane" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F8FAFC"/><stop offset="1" stop-color="#EAF0F5"/></linearGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#D8E5F0" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="1200" height="440" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="440" rx="28" fill="url(#grid)"/>
+  <path d="M-35 380C155 270 253 420 433 306S707 160 845 216 1043 385 1240 225" fill="none" stroke="#6A8DAA" stroke-opacity=".16" stroke-width="32"/>
+  <path d="M-35 380C155 270 253 420 433 306S707 160 845 216 1043 385 1240 225" fill="none" stroke="#FBBF62" stroke-opacity=".2" stroke-width="3" stroke-dasharray="5 13"/>
+  <g transform="translate(55 47)">
+    <rect width="43" height="43" rx="13" fill="#FFBC58"/>
+    <rect x="11" y="10" width="21" height="21" rx="5" fill="#132235"/>
+    <rect x="15" y="14" width="13" height="8" rx="2" fill="#FFBC58"/>
+    <circle cx="16.5" cy="31" r="3.3" fill="#132235"/><circle cx="27.5" cy="31" r="3.3" fill="#132235"/>
+    <text x="58" y="28" fill="#F5F8FC" font-size="18" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif" letter-spacing="1.5">YEAAN / TRANSIT</text>
+  </g>
+  <g font-family="Noto Sans KR, Arial, sans-serif">
+    <text x="57" y="164" fill="#FFFFFF" font-size="66" font-weight="800" letter-spacing="-2">YeaAnBus<tspan fill="#FFBC58">.</tspan></text>
+    <text x="58" y="216" fill="#DDE7F0" font-size="23" font-weight="600">안동과 예천, 길 위의 정보를 더 가깝게.</text>
+    <text x="58" y="252" fill="#9EAFBF" font-size="16">Stop search · Real-time arrivals · Vehicle location</text>
+    <rect x="58" y="288" width="138" height="36" rx="18" fill="#FFBC58"/>
+    <text x="127" y="312" fill="#172536" font-size="15" font-weight="800" text-anchor="middle">Android App</text>
+    <rect x="208" y="288" width="193" height="36" rx="18" fill="none" stroke="#73889C" stroke-opacity=".7"/>
+    <text x="304" y="311" fill="#DDE7F0" font-size="14" font-weight="600" text-anchor="middle">Kotlin · Compose</text>
+    <text x="58" y="388" fill="#7F95A9" font-size="13">OPEN SOURCE PROJECT  /  CONCEPT ARTWORK</text>
+  </g>
+  <g transform="translate(695 51)">
+    <rect x="0" y="0" width="444" height="336" rx="27" fill="url(#pane)"/>
+    <rect x="0.5" y=".5" width="443" height="335" rx="26.5" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <rect x="23" y="22" width="398" height="45" rx="12" fill="#182839"/>
+    <circle cx="45" cy="44" r="6" fill="#FFBC58"/>
+    <text x="60" y="50" fill="#FFFFFF" font-size="17" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif">정류장 도착 안내</text>
+    <text x="386" y="49" fill="#FFBC58" text-anchor="end" font-size="13" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif">LIVE</text>
+    <text x="29" y="111" fill="#253749" font-size="19" font-weight="800" font-family="Noto Sans KR, Arial, sans-serif">안동역</text>
+    <text x="416" y="111" text-anchor="end" fill="#718396" font-size="12" font-family="Arial, sans-serif">STOP  /  PREVIEW</text>
+    <rect x="23" y="128" width="398" height="80" rx="16" fill="#FFFFFF" stroke="#DDE5ED"/>
+    <rect x="36" y="143" width="71" height="47" rx="10" fill="#E6EEFA"/>
+    <text x="71" y="174" fill="#255EAD" font-size="19" font-weight="800" text-anchor="middle" font-family="Noto Sans KR, Arial, sans-serif">순환2</text>
+    <text x="124" y="160" fill="#253749" font-size="16" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif">순환 노선</text>
+    <text x="124" y="181" fill="#7D8B98" font-size="12" font-family="Noto Sans KR, Arial, sans-serif">예상 도착 시간</text>
+    <text x="393" y="178" fill="#164F40" text-anchor="end" font-size="28" font-weight="800" font-family="Noto Sans KR, Arial, sans-serif">3분</text>
+    <rect x="23" y="217" width="398" height="71" rx="15" fill="#FFFFFF" stroke="#DDE5ED"/>
+    <rect x="36" y="231" width="71" height="42" rx="10" fill="#FDF0DA"/>
+    <text x="71" y="259" fill="#936014" font-size="20" font-weight="800" text-anchor="middle" font-family="Arial, sans-serif">11</text>
+    <text x="124" y="251" fill="#253749" font-size="16" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif">버스 도착 정보</text>
+    <text x="393" y="260" fill="#52687B" text-anchor="end" font-size="25" font-weight="800" font-family="Noto Sans KR, Arial, sans-serif">11분</text>
+    <line x1="39" y1="312" x2="403" y2="312" stroke="#C9D6E2" stroke-width="5" stroke-linecap="round"/>
+    <line x1="39" y1="312" x2="194" y2="312" stroke="#FFBC58" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="40" cy="312" r="8" fill="#FFBC58" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="194" cy="312" r="8" fill="#FFBC58" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="402" cy="312" r="8" fill="#F8FAFC" stroke="#92A7B9" stroke-width="3"/>
+  </g>
+</svg>

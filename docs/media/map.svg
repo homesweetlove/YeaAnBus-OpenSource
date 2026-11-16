@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="385" viewBox="0 0 680 385" role="img" aria-labelledby="t d">
+  <title id="t">버스 위치와 지도</title><desc id="d">지도 위 정류장과 노선을 표현한 기능 일러스트</desc>
+  <rect width="680" height="385" rx="26" fill="#EFF4F6"/>
+  <path d="M0 69H680M0 143H680M0 222H680M0 303H680M79 0V385M196 0V385M336 0V385M492 0V385M602 0V385" stroke="#DDE6E9" stroke-width="17" fill="none"/>
+  <path d="M-10 292C165 259 188 319 313 243S503 161 690 93" stroke="#B8D3E6" stroke-width="33" fill="none"/>
+  <path d="M-10 292C165 259 188 319 313 243S503 161 690 93" stroke="#FFFFFF" stroke-width="6" stroke-dasharray="18 16" fill="none"/>
+  <path d="M77 326C170 275 216 311 297 239S425 140 537 180 610 129 642 100" fill="none" stroke="#2F709E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M77 326C170 275 216 311 297 239S425 140 537 180 610 129 642 100" fill="none" stroke="#A2D4F1" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 12"/>
+  <g fill="#FFFFFF" stroke="#2F709E" stroke-width="6"><circle cx="103" cy="314" r="13"/><circle cx="297" cy="239" r="13"/><circle cx="537" cy="180" r="13"/><circle cx="632" cy="111" r="13"/></g>
+  <g transform="translate(386 116)">
+    <rect x="-25" y="-19" width="60" height="42" rx="12" fill="#FFBC58" stroke="#FFFFFF" stroke-width="5"/>
+    <rect x="-12" y="-8" width="34" height="14" rx="4" fill="#193047"/>
+    <circle cx="-10" cy="24" r="6" fill="#193047"/><circle cx="20" cy="24" r="6" fill="#193047"/>
+  </g>
+  <rect x="32" y="28" width="282" height="74" rx="17" fill="#FFFFFF" stroke="#D6E2EA"/>
+  <circle cx="58" cy="64" r="9" fill="#54A685"/>
+  <text x="78" y="62" fill="#1C3042" font-size="22" font-weight="800" font-family="Noto Sans KR, Arial, sans-serif">버스 위치</text>
+  <text x="78" y="83" fill="#7B8E9C" font-size="13" font-family="Noto Sans KR, Arial, sans-serif">위치 정보와 정류장을 지도에 표시</text>
+  <rect x="411" y="305" width="231" height="43" rx="15" fill="#163348"/>
+  <text x="527" y="333" fill="#FFFFFF" font-size="16" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif" text-anchor="middle">MAP · ROUTE</text>
+</svg>

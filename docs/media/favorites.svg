@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="385" viewBox="0 0 680 385" role="img" aria-labelledby="t d">
+  <title id="t">즐겨찾기와 나만의 설정</title><desc id="d">즐겨찾기 정류장과 테마 설정을 보여주는 기능 일러스트</desc>
+  <rect width="680" height="385" rx="26" fill="#F4F2F0"/>
+  <rect x="35" y="31" width="610" height="324" rx="24" fill="#FFFFFF" stroke="#E1E6EB"/>
+  <g font-family="Noto Sans KR, Arial, sans-serif">
+    <text x="63" y="83" fill="#1C3042" font-size="26" font-weight="800">내 정류장</text>
+    <text x="566" y="83" fill="#A46D24" font-size="20" font-weight="800">★</text>
+    <rect x="63" y="105" width="553" height="79" rx="16" fill="#F4F7FA"/>
+    <rect x="81" y="124" width="54" height="42" rx="12" fill="#E5EDF7"/>
+    <text x="108" y="154" fill="#3569A7" text-anchor="middle" font-size="21" font-weight="800">A</text>
+    <text x="150" y="141" fill="#263746" font-size="18" font-weight="800">자주 찾는 정류장</text>
+    <text x="150" y="164" fill="#72889C" font-size="14">즐겨찾기로 빠르게 확인</text>
+    <text x="572" y="150" fill="#D99A35" text-anchor="end" font-size="27">★</text>
+    <text x="63" y="224" fill="#1C3042" font-size="20" font-weight="800">색상 테마</text>
+    <text x="63" y="248" fill="#72889C" font-size="14">취향에 맞게 바꿔 쓰는 화면</text>
+  </g>
+  <g><circle cx="102" cy="295" r="21" fill="#245AAF"/><circle cx="171" cy="295" r="21" fill="#176B50"/><circle cx="240" cy="295" r="21" fill="#7147A8"/><circle cx="309" cy="295" r="21" fill="#9C4919"/><circle cx="171" cy="295" r="27" stroke="#176B50" fill="none" stroke-width="2"/></g>
+  <rect x="422" y="271" width="185" height="46" rx="23" fill="#192D40"/>
+  <text x="514" y="301" fill="#FFFFFF" text-anchor="middle" font-size="16" font-weight="700" font-family="Noto Sans KR, Arial, sans-serif">PERSONALIZE</text>
+</svg>
